@@ -53,7 +53,7 @@ public class DescripcionConstruccion extends AppCompatActivity implements MultiS
 
 
 
-                Toast.makeText(getApplicationContext(), "Componentes Seleccionados son :" + strings, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Componentes  :" + strings, Toast.LENGTH_LONG).show();
 
 
             }
