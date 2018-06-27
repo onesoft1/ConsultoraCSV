@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">CSV</string>
+    <string name="hoja_de_campo_vivienda">HOJA DE CAMPO VIVIENDA</string>
+    <string name="codigo_de_cliente">CODIGO DE CLIENTE:</string>
+    <string name="informacion_general">INFORMACION GENERAL</string>
+    <string name="nro_avaluo">Nro. Avaluo</string>
+    <string name="costo">COSTO:</string>
+    <string name="inspector_de_campo">INSPECTOR DE CAMPO:</string>
+    <string name="nombre_del_solicitante">NOMBRE DEL SOLICITANTE:</string>
+    <string name="telefono">TELEFONO:</string>
+    <string name="entidad_financiera">ENTIDAD FINANCIERA:</string>
+    <string name="of_credito">OF. CREDITO:</string>
+    <string name="direccion">DIRECCION:</string>
+    <string name="siguiente"><![CDATA[Siguiente>>]]></string>
+    <string name="descpriciones_de_las_construcciones">DESCPRICIONES DE LAS CONSTRUCCIONES</string>
+    <string name="gestionar_imagen">GESTIONAR IMAGEN</string>
+    <string name="selecciona_imagen">Selecciona Imagen</string>
+    <string name="gestionar_foto">GESTIONAR FOTO</string>
+    <string name="tomar_foto">Tomar Foto</string>
+    <string name="imagen">TODO</string>
+
+
+
+    <string name="action_settings">Settings</string>
+    <string name="appbar_scrolling_view_behavior">appbar_scrolling_view_behavior</string>
+</resources>
