@@ -12,7 +12,7 @@ import com.multispinner.MultiSelectSpinner;
 
 import java.util.List;
 
-public class DescripcionConstruccion extends AppCompatActivity implements MultiSelectSpinner.OnMultipleItemsSelectedListener {
+public class DescripcionConstruccion extends AppCompatActivity {
 
     TextView archi;
     String archi1;
@@ -33,7 +33,17 @@ public class DescripcionConstruccion extends AppCompatActivity implements MultiS
         multiSelectSpinner.setItems(array);
         multiSelectSpinner.hasNoneOption(true);
         multiSelectSpinner.setSelection(new int[]{0});
-        multiSelectSpinner.setListener(this);
+        multiSelectSpinner.setListener(new MultiSelectSpinner.OnMultipleItemsSelectedListener() {
+            @Override
+            public void selectedIndices(List<Integer> indices) {
+
+            }
+
+            @Override
+            public void selectedStrings(List<String> strings) {
+                Toast.makeText(getApplicationContext(), "Componentes Seleccionados:" + strings, Toast.LENGTH_LONG).show();
+            }
+        });
 
 
         String[] array1 = {"None", "Hormigón Armado", "mixta de H°A° y muros portantes", "muros portantes con encadenado", "muros portantes sin encadenado", "metálica", "madera"};
@@ -53,7 +63,7 @@ public class DescripcionConstruccion extends AppCompatActivity implements MultiS
 
 
 
-                Toast.makeText(getApplicationContext(), "Componentes son :" + strings, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Componentes Seleccionados :" + strings, Toast.LENGTH_LONG).show();
 
 
             }
@@ -74,17 +84,5 @@ public class DescripcionConstruccion extends AppCompatActivity implements MultiS
         startActivity(i);
     }
 
-    @Override
-    public void selectedIndices(List<Integer> indices) {
 
-    }
-
-    @Override
-    public void selectedStrings(List<String> strings) {
-
-
-
-        Toast.makeText(this.getApplicationContext(),"Componentes Seleccionados" + strings,Toast.LENGTH_LONG).show();
-
-    }
 }
