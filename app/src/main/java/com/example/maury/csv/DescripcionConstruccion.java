@@ -52,6 +52,10 @@ public class DescripcionConstruccion extends AppCompatActivity implements MultiS
             public void selectedStrings(List<String> strings) {
 
 
+
+                Toast.makeText(getApplicationContext(), "Componentes Seleccionados son ninguno sirve :" + strings, Toast.LENGTH_LONG).show();
+
+
             }
         });
 
