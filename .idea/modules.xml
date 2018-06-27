@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Consultora.iml" filepath="$PROJECT_DIR$/Consultora.iml" />
+      <module fileurl="file://D:\Consultora\ConsultoraCSV\Consultora.iml" filepath="D:\Consultora\ConsultoraCSV\Consultora.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ConsultoraCSV.iml" filepath="$PROJECT_DIR$/ConsultoraCSV.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\Consultora\ConsultoraCSV\app\app.iml" filepath="D:\Consultora\ConsultoraCSV\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/multispinner/multispinner.iml" filepath="$PROJECT_DIR$/multispinner/multispinner.iml" />
+      <module fileurl="file://D:\Consultora\ConsultoraCSV\multispinner\multispinner.iml" filepath="D:\Consultora\ConsultoraCSV\multispinner\multispinner.iml" />
     </modules>
   </component>
 </project>

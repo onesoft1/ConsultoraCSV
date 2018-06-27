@@ -50,7 +50,7 @@ public class DescripcionConstruccion extends AppCompatActivity implements MultiS
 
             @Override
             public void selectedStrings(List<String> strings) {
-                Toast.makeText(getApplicationContext(), "Componentes Seleccionados son todo :" + strings, Toast.LENGTH_LONG).show();
+
 
             }
         });
