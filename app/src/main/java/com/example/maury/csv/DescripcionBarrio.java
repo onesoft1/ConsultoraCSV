@@ -12,8 +12,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.multispinner.MultiSelectSpinner;
+
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import jxl.Workbook;
 import jxl.write.Label;
@@ -47,7 +50,46 @@ public class DescripcionBarrio extends AppCompatActivity {
         archi1=getIntent().getExtras().getString("archivo");
         archi.setText(archi1);
 
+        //Multi Spinner servicios Vacicos
 
+        String[] array = {"None", "Luz", "Agua", "AlCantarillado", "Telefono", "Gas", "Transporte", "Alumbrado"};
+        MultiSelectSpinner multiSelectSpinner = (MultiSelectSpinner) findViewById(R.id.spinnerserviciosvacicos);
+        multiSelectSpinner.setItems(array);
+        multiSelectSpinner.hasNoneOption(true);
+        multiSelectSpinner.setSelection(new int[]{0});
+        multiSelectSpinner.setListener(new MultiSelectSpinner.OnMultipleItemsSelectedListener() {
+            @Override
+            public void selectedIndices(List<Integer> indices) {
+
+            }
+
+            @Override
+            public void selectedStrings(List<String> strings) {
+                Toast.makeText(getApplicationContext(), "Componentes Seleccionados:" + strings, Toast.LENGTH_LONG).show();
+            }
+        });
+
+        //
+        //Multi Spinner Documentos del Cliente
+
+        String[] array1 = {"None", "Testimonio", "DD.RR.", "Catastro", "P.U. Suelo", "P. Contr.", "Inpuesto", "Alumbrado"};
+        MultiSelectSpinner multiSelectSpinner1 = (MultiSelectSpinner) findViewById(R.id.spinnerdocumentacioncliente);
+        multiSelectSpinner1.setItems(array);
+        multiSelectSpinner1.hasNoneOption(true);
+        multiSelectSpinner1.setSelection(new int[]{0});
+        multiSelectSpinner1.setListener(new MultiSelectSpinner.OnMultipleItemsSelectedListener() {
+            @Override
+            public void selectedIndices(List<Integer> indices) {
+
+            }
+
+            @Override
+            public void selectedStrings(List<String> strings) {
+                Toast.makeText(getApplicationContext(), "Componentes Seleccionados:" + strings, Toast.LENGTH_LONG).show();
+            }
+        });
+
+        //
 
 
 

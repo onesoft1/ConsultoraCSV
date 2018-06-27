@@ -4,6 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+
+
+    android:paddingTop="16dp"
+
     tools:context="com.example.maury.csv.DescripcionBarrio">
 
     <ScrollView
@@ -50,8 +58,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:choiceMode="singleChoice"
-                    >
+                    android:choiceMode="singleChoice">
 
                 </Spinner>
 
@@ -156,66 +163,8 @@
                 android:textAlignment="center"
                 android:textStyle="bold" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+            <include layout="@layout/serviciosvacicos" />
 
-                <CheckBox
-                    android:id="@+id/checkBox2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TELEF." />
-
-                <CheckBox
-                    android:id="@+id/checkBox3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="GAS" />
-
-                <CheckBox
-                    android:id="@+id/checkBox4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="LUZ" />
-
-                <CheckBox
-                    android:id="@+id/checkBox5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TRANSP." />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <CheckBox
-                    android:id="@+id/checkBox6"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="ALUM." />
-
-                <CheckBox
-                    android:id="@+id/checkBox7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="ALCANT." />
-
-                <CheckBox
-                    android:id="@+id/checkBox8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="AGUA" />
-            </LinearLayout>
 
             <TextView
                 android:id="@+id/textView21"
@@ -370,53 +319,7 @@
                 android:textAlignment="center"
                 android:textStyle="bold" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <CheckBox
-                    android:id="@+id/checkBox9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TESTIMONIO:" />
-
-                <CheckBox
-                    android:id="@+id/checkBox10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="DD.RR." />
-
-                <CheckBox
-                    android:id="@+id/checkBox11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="CATASTRO:" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <CheckBox
-                    android:id="@+id/checkBox12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="P.U.SUELO:" />
-
-                <CheckBox
-                    android:id="@+id/checkBox14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="IMPUESTO:" />
-            </LinearLayout>
+            <include layout="@layout/documentacioncliente" />
 
             <LinearLayout
                 android:layout_width="match_parent"
