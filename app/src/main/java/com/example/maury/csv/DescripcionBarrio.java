@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,13 +42,14 @@ public class DescripcionBarrio extends AppCompatActivity {
 
 
     CheckBox cordones;
+    EditText contaminante, inclina;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_descripcion_barrio);
         //recuperar nombre del archivo
-        archi=(TextView) findViewById(R.id.archivo);
-        archi1=getIntent().getExtras().getString("archivo");
+        archi = (TextView) findViewById(R.id.archivo);
+        archi1 = getIntent().getExtras().getString("archivo");
         archi.setText(archi1);
 
         //Multi Spinner servicios Vacicos
@@ -91,42 +93,37 @@ public class DescripcionBarrio extends AppCompatActivity {
 
         //
 
-
+//-------Spinner------
 
 
         // cargado de tipo
-        tipo=(Spinner) findViewById(R.id.Tipo);
+        tipo = (Spinner) findViewById(R.id.Tipo);
 
 
+        // ArrayList<tipos> tipooo=new ArrayList<tipos>();
 
-
-
-       // ArrayList<tipos> tipooo=new ArrayList<tipos>();
-
-        String [] tipoo={"Seleccione una Opcion","Urbano","Rural","Suburbano","Industrial"};
-        ArrayAdapter<String> adaptertipo= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_single_choice,tipoo);
+        String[] tipoo = {"Seleccione una Opcion", "Urbano", "Rural", "Suburbano", "Industrial"};
+        ArrayAdapter<String> adaptertipo = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, tipoo);
         tipo.setAdapter(adaptertipo);
         tipo.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String seleccion=adapterView.getItemAtPosition(i).toString();
-                path= Environment.getExternalStorageDirectory()+
-                        File.separator+CARPETA_RAIZ+File.separator+archi1+".xls";
+                String seleccion = adapterView.getItemAtPosition(i).toString();
+                path = Environment.getExternalStorageDirectory() + File.separator + CARPETA_RAIZ + File.separator + archi1 + ".xls";
 
-                if(seleccion=="Seleccione una Opcion"){
+                if (seleccion == "Seleccione una Opcion") {
 
-                }
-                else {
+                } else {
                     try {
                         Workbook wb = Workbook.getWorkbook(new File(path));
-                        WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
-                        WritableSheet copySheet=copy.getSheet(0);
-                       Label label1=new Label(6,9,seleccion);
-                       // Label label2=new Label(1,6,datee);
-                       // Label label3=new Label(1,4,"Todo Bien");
-                       copySheet.addCell(label1);
-                       // copySheet.addCell(label2);
-                       // copySheet.addCell(label3);
+                        WritableWorkbook copy = Workbook.createWorkbook(new File(path), wb);
+                        WritableSheet copySheet = copy.getSheet(0);
+                        Label label1 = new Label(6, 9, seleccion);
+                        // Label label2=new Label(1,6,datee);
+                        // Label label3=new Label(1,4,"Todo Bien");
+                        copySheet.addCell(label1);
+                        // copySheet.addCell(label2);
+                        // copySheet.addCell(label3);
                         copy.write();
                         copy.close();
 
@@ -148,14 +145,35 @@ public class DescripcionBarrio extends AppCompatActivity {
 
 
         // cargado de Actividad Zona
-        zona=(Spinner) findViewById(R.id.ActividadZona);
-        String [] zonaa={"Seleccione una Opcion","Residencial","Comercial","Agrícola","Industrial"};
-        ArrayAdapter<String> adapterzona= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_single_choice,zonaa);
+        zona = (Spinner) findViewById(R.id.ActividadZona);
+        String[] zonaa = {"Seleccione una Opcion", "Residencial", "Comercial", "Agrícola", "Industrial"};
+        ArrayAdapter<String> adapterzona = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, zonaa);
         zona.setAdapter(adapterzona);
         zona.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String seleccion=adapterView.getItemAtPosition(i).toString();
+                String seleccion = adapterView.getItemAtPosition(i).toString();
+                //menssaje(seleccion);
+                path = Environment.getExternalStorageDirectory() + File.separator + CARPETA_RAIZ + File.separator + archi1 + ".xls";
+
+                if (seleccion == "Seleccione una Opcion") {
+
+                } else {
+                    try {
+                        Workbook wb = Workbook.getWorkbook(new File(path));
+                        WritableWorkbook copy = Workbook.createWorkbook(new File(path), wb);
+                        WritableSheet copySheet = copy.getSheet(0);
+                        Label label1 = new Label(6, 10, seleccion);
+                        copySheet.addCell(label1);
+                        copy.write();
+                        copy.close();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
                 menssaje(seleccion);
             }
 
@@ -166,51 +184,301 @@ public class DescripcionBarrio extends AppCompatActivity {
         });
 
         // cargado de descripcion calle
-        calle=(Spinner) findViewById(R.id.DesCalle);
-        String [] callee={"Seleccione una Opcion","Tierra","Empedrado","Asfalto","Pavimento"};
-        ArrayAdapter<String> adaptercalle= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,callee);
+        calle = (Spinner) findViewById(R.id.DesCalle);
+        String[] callee = {"Seleccione una Opcion", "Tierra", "Empedrado", "Asfalto", "Pavimento"};
+        ArrayAdapter<String> adaptercalle = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, callee);
         calle.setAdapter(adaptercalle);
+        calle.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String seleccion = adapterView.getItemAtPosition(i).toString();
+
+                path = Environment.getExternalStorageDirectory() + File.separator + CARPETA_RAIZ + File.separator + archi1 + ".xls";
+
+                if (seleccion == "Seleccione una Opcion") {
+
+                } else {
+                    try {
+                        Workbook wb = Workbook.getWorkbook(new File(path));
+                        WritableWorkbook copy = Workbook.createWorkbook(new File(path), wb);
+                        WritableSheet copySheet = copy.getSheet(0);
+                        Label label1 = new Label(6, 12, seleccion);
+                        copySheet.addCell(label1);
+                        copy.write();
+                        copy.close();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
+                menssaje(seleccion);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        //
 
         // cargado de ocupado
-        ocupado=(Spinner) findViewById(R.id.Ocupado);
-        String [] ocupadoo={"Seleccione una Opcion","Propietario","Inquilino en Alquiler","Inquilinos en anticrético","Sin ocupantes","Empleados","Parientes","Solicitante"};
-        ArrayAdapter<String> adapterocupado= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,ocupadoo);
+        ocupado = (Spinner) findViewById(R.id.Ocupado);
+        String[] ocupadoo = {"Seleccione una Opcion", "Propietario", "Inquilino en Alquiler", "Inquilinos en anticrético", "Sin ocupantes", "Empleados", "Parientes", "Solicitante"};
+        ArrayAdapter<String> adapterocupado = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, ocupadoo);
         ocupado.setAdapter(adapterocupado);
+        ocupado.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String seleccion = adapterView.getItemAtPosition(i).toString();
+
+                path = Environment.getExternalStorageDirectory() + File.separator + CARPETA_RAIZ + File.separator + archi1 + ".xls";
+
+                if (seleccion == "Seleccione una Opcion") {
+
+                } else {
+                    try {
+                        Workbook wb = Workbook.getWorkbook(new File(path));
+                        WritableWorkbook copy = Workbook.createWorkbook(new File(path), wb);
+                        WritableSheet copySheet = copy.getSheet(0);
+                        Label label1 = new Label(6, 13, seleccion);
+                        copySheet.addCell(label1);
+                        copy.write();
+                        copy.close();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
+                menssaje(seleccion);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        //
 
         // Cargado de muro norte
-        muronorte=(Spinner) findViewById(R.id.MuroNorte);
-        String [] murosnortee={"Seleccione una Opcion","Propios","Vecinos","Medianeros"};
-        ArrayAdapter<String> adapternorte= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,murosnortee);
+        muronorte = (Spinner) findViewById(R.id.MuroNorte);
+        String[] murosnortee = {"Seleccione una Opcion", "Propios", "Vecinos", "Medianeros"};
+        ArrayAdapter<String> adapternorte = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, murosnortee);
         muronorte.setAdapter(adapternorte);
+        muronorte.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String seleccion = adapterView.getItemAtPosition(i).toString();
+
+                path = Environment.getExternalStorageDirectory() + File.separator + CARPETA_RAIZ + File.separator + archi1 + ".xls";
+
+                if (seleccion == "Seleccione una Opcion") {
+
+                } else {
+                    try {
+                        Workbook wb = Workbook.getWorkbook(new File(path));
+                        WritableWorkbook copy = Workbook.createWorkbook(new File(path), wb);
+                        WritableSheet copySheet = copy.getSheet(0);
+                        Label label1 = new Label(1, 15, seleccion);
+                        copySheet.addCell(label1);
+                        copy.write();
+                        copy.close();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
+                menssaje(seleccion);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        //
 
         // Cargado de muro sud
-        murosud=(Spinner) findViewById(R.id.MuroSud);
-        String [] murosudd={"Seleccione una Opcion","Propios","Vecinos","Medianeros"};
-        ArrayAdapter<String> adaptersud= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,murosudd);
+        murosud = (Spinner) findViewById(R.id.MuroSud);
+        String[] murosudd = {"Seleccione una Opcion", "Propios", "Vecinos", "Medianeros"};
+        ArrayAdapter<String> adaptersud = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, murosudd);
         murosud.setAdapter(adaptersud);
+        murosud.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String seleccion = adapterView.getItemAtPosition(i).toString();
+
+                path = Environment.getExternalStorageDirectory() + File.separator + CARPETA_RAIZ + File.separator + archi1 + ".xls";
+
+                if (seleccion == "Seleccione una Opcion") {
+
+                } else {
+                    try {
+                        Workbook wb = Workbook.getWorkbook(new File(path));
+                        WritableWorkbook copy = Workbook.createWorkbook(new File(path), wb);
+                        WritableSheet copySheet = copy.getSheet(0);
+                        Label label1 = new Label(1, 16, seleccion);
+                        copySheet.addCell(label1);
+                        copy.write();
+                        copy.close();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
+                menssaje(seleccion);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        //
 
         // Cargado de muro este
-        muroeste=(Spinner) findViewById(R.id.MuroEste);
-        String [] muroestee={"Seleccione una Opcion","Propios","Vecinos","Medianeros"};
-        ArrayAdapter<String> adaptereste= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,muroestee);
+        muroeste = (Spinner) findViewById(R.id.MuroEste);
+        String[] muroestee = {"Seleccione una Opcion", "Propios", "Vecinos", "Medianeros"};
+        ArrayAdapter<String> adaptereste = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, muroestee);
         muroeste.setAdapter(adaptereste);
+        muroeste.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String seleccion = adapterView.getItemAtPosition(i).toString();
+
+                path = Environment.getExternalStorageDirectory() + File.separator + CARPETA_RAIZ + File.separator + archi1 + ".xls";
+
+                if (seleccion == "Seleccione una Opcion") {
+
+                } else {
+                    try {
+                        Workbook wb = Workbook.getWorkbook(new File(path));
+                        WritableWorkbook copy = Workbook.createWorkbook(new File(path), wb);
+                        WritableSheet copySheet = copy.getSheet(0);
+                        Label label1 = new Label(1, 17, seleccion);
+                        copySheet.addCell(label1);
+                        copy.write();
+                        copy.close();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
+                menssaje(seleccion);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        //
 
         // Cargado de muro oeste
-        murooeste=(Spinner) findViewById(R.id.MuroOeste);
-        String [] murooestee={"Seleccione una Opcion","Propios","Vecinos","Medianeros"};
-        ArrayAdapter<String> adapteroeste= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,murooestee);
+        murooeste = (Spinner) findViewById(R.id.MuroOeste);
+        String[] murooestee = {"Seleccione una Opcion", "Propios", "Vecinos", "Medianeros"};
+        ArrayAdapter<String> adapteroeste = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, murooestee);
         murooeste.setAdapter(adapteroeste);
+        murooeste.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String seleccion = adapterView.getItemAtPosition(i).toString();
+
+                path = Environment.getExternalStorageDirectory() + File.separator + CARPETA_RAIZ + File.separator + archi1 + ".xls";
+
+                if (seleccion == "Seleccione una Opcion") {
+
+                } else {
+                    try {
+                        Workbook wb = Workbook.getWorkbook(new File(path));
+                        WritableWorkbook copy = Workbook.createWorkbook(new File(path), wb);
+                        WritableSheet copySheet = copy.getSheet(0);
+                        Label label1 = new Label(1, 18, seleccion);
+                        copySheet.addCell(label1);
+                        copy.write();
+                        copy.close();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
+                menssaje(seleccion);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        //
 
 
         // Cargado de Ancho de Via
-        anchovia=(Spinner) findViewById(R.id.AnchoVia);
-        String [] anchoviaa={"Seleccione una Opcion","9","12","MAS DE 20"};
-        ArrayAdapter<String> adaptervia= new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,anchoviaa);
+        anchovia = (Spinner) findViewById(R.id.AnchoVia);
+        String[] anchoviaa = {"Seleccione una Opcion", "9", "12", "MAS DE 20"};
+        ArrayAdapter<String> adaptervia = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, anchoviaa);
         anchovia.setAdapter(adaptervia);
+        anchovia.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String seleccion = adapterView.getItemAtPosition(i).toString();
+
+                path = Environment.getExternalStorageDirectory() + File.separator + CARPETA_RAIZ + File.separator + archi1 + ".xls";
+
+                if (seleccion == "Seleccione una Opcion") {
+
+                } else {
+                    try {
+                        Workbook wb = Workbook.getWorkbook(new File(path));
+                        WritableWorkbook copy = Workbook.createWorkbook(new File(path), wb);
+                        WritableSheet copySheet = copy.getSheet(0);
+                        Label label1 = new Label(11, 16, seleccion);
+                        copySheet.addCell(label1);
+                        copy.write();
+                        copy.close();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+
+                menssaje(seleccion);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        //
 
         //------CheckBox-------
         //cordones
-        cordones= (CheckBox) findViewById(R.id.Cordones);
+        cordones = (CheckBox) findViewById(R.id.Cordones);
+
+        //-----EditTex------
+        // contaminacion
+        contaminante = (EditText) findViewById(R.id.contaminacion);
+        inclina= (EditText) findViewById(R.id.inclinacion);
+
 
 
 
@@ -225,12 +493,69 @@ public class DescripcionBarrio extends AppCompatActivity {
     public void siguiente(View view) {
         String nomArchivo=archi.getText().toString();
         validarcheckbox();
+        contaminantes();
 
         Intent i=new Intent(this,DescripcionConstruccion.class);
         i.putExtra("archivo",nomArchivo);
         startActivity(i);
 
     }
+
+    private void inclinacion(){
+        String incli= inclina.getText().toString();
+
+        if(incli!=""){
+            try {
+                Workbook wb = Workbook.getWorkbook(new File(path));
+                WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
+                WritableSheet copySheet=copy.getSheet(0);
+                Label label1=new Label(11,15,incli);
+
+                copySheet.addCell(label1);
+
+                copy.write();
+                copy.close();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            menssaje("Debe llenar el Campo Focos de Contaminacion");
+
+        }
+    }
+
+    private void contaminantes(){
+        String conta= contaminante.getText().toString();
+
+        if(conta!=""){
+            try {
+                Workbook wb = Workbook.getWorkbook(new File(path));
+                WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
+                WritableSheet copySheet=copy.getSheet(0);
+                Label label1=new Label(16,12,conta);
+                // Label label2=new Label(1,6,datee);
+                // Label label3=new Label(1,4,"Todo Bien");
+                copySheet.addCell(label1);
+                // copySheet.addCell(label2);
+                // copySheet.addCell(label3);
+                copy.write();
+                copy.close();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            menssaje("Debe llenar el Campo Focos de Contaminacion");
+
+        }
+
+    }
+
+
+
 
     private void validarcheckbox() {
             if(cordones.isChecked()==true){
