@@ -42,7 +42,7 @@ public class DescripcionBarrio extends AppCompatActivity {
 
 
     CheckBox cordones;
-    EditText contaminante, inclina, taagua;
+    EditText contaminante, inclina;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,81 +67,9 @@ public class DescripcionBarrio extends AppCompatActivity {
 
             @Override
             public void selectedStrings(List<String> strings) {
-                 datosllena(2,14,"");
-                datosllena(4,14,"");
-                datosllena(6,14,"");
-                datosllena(8,14,"");
-                datosllena(10,14,"");
-                datosllena(12,14,"");
-                datosllena(14,14,"");
-
-                for(int i=0; i<strings.size();i++){
-                    String valor= "Si";
-
-                    String datos= strings.get(i);
-                    if(datos=="Luz"){
-                        //Toast.makeText(getApplicationContext(), "Compo Seleccionado:" + datos, Toast.LENGTH_LONG).show();
-                        datosllena(2,14,valor);
-
-                    }else{
-
-                        if (datos=="Agua"){
-                            // Toast.makeText(getApplicationContext(), "Compo Seleccionado:" + datos, Toast.LENGTH_LONG).show();
-                            datosllena(4,14,valor);
-
-                        }else {
-                            if (datos=="AlCantarillado"){
-                                // Toast.makeText(getApplicationContext(), "Compo Seleccionado:" + datos, Toast.LENGTH_LONG).show();
-                                datosllena(6,14,valor);
-
-
-                            }else{
-                                if (datos=="Telefono"){
-                                    // Toast.makeText(getApplicationContext(), "Compo Seleccionado:" + datos, Toast.LENGTH_LONG).show();
-                                    datosllena(8,14,valor);
-
-
-                                }else{
-                                    if (datos=="Gas"){
-                                        // Toast.makeText(getApplicationContext(), "Compo Seleccionado:" + datos, Toast.LENGTH_LONG).show();
-                                        datosllena(10,14,valor);
-
-
-                                    }else{
-                                        if (datos=="Transporte"){
-                                            // Toast.makeText(getApplicationContext(), "Compo Seleccionado:" + datos, Toast.LENGTH_LONG).show();
-                                            datosllena(12,14,valor);
-
-
-                                        }else {
-                                            if (datos=="Alumbrado"){
-                                                //Toast.makeText(getApplicationContext(), "Compo Seleccionado:" + datos, Toast.LENGTH_LONG).show();
-                                                datosllena(14,14,"si");
-
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-
-
-                    //Toast.makeText(getApplicationContext(), "Componentes Seleccionados:" + datos, Toast.LENGTH_LONG).show();
-                }
-
-
-
-
-
-
-               // Toast.makeText(getApplicationContext(), "Componentes Seleccionados:" + strings, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Componentes Seleccionados:" + strings, Toast.LENGTH_LONG).show();
             }
         });
-
-
-
 
         //
         //Multi Spinner Documentos del Cliente
@@ -606,24 +534,11 @@ public class DescripcionBarrio extends AppCompatActivity {
         // contaminacion
         contaminante = (EditText) findViewById(R.id.contaminacion);
         inclina= (EditText) findViewById(R.id.inclinacion);
-        taagua=(EditText) findViewById(R.id.tagus);
-    }
-    private void datosllena(int c, int r, String dato){
-        try {
-            Workbook wb = Workbook.getWorkbook(new File(path));
-            WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
-            WritableSheet copySheet=copy.getSheet(0);
-            Label label1=new Label(c,r,dato);
 
-            copySheet.addCell(label1);
 
-            copy.write();
-            copy.close();
-            //Toast.makeText(getApplicationContext(), "dato llenado en:"+c+r+ dato, Toast.LENGTH_LONG).show();
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
+
     }
 
     public void menssaje(String a)
@@ -633,40 +548,13 @@ public class DescripcionBarrio extends AppCompatActivity {
 
     public void siguiente(View view) {
         String nomArchivo=archi.getText().toString();
-        validarcheckbox();
-        contaminantes();
-        inclinacion();
-        Tagua();
+       // validarcheckbox();
+        //contaminantes();
 
         Intent i=new Intent(this,DescripcionConstruccion.class);
         i.putExtra("archivo",nomArchivo);
         startActivity(i);
 
-    }
-
-    private void Tagua(){
-        String incli= taagua.getText().toString();
-
-        if(incli!=""){
-            try {
-                Workbook wb = Workbook.getWorkbook(new File(path));
-                WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
-                WritableSheet copySheet=copy.getSheet(0);
-                Label label1=new Label(11,17,incli);
-
-                copySheet.addCell(label1);
-
-                copy.write();
-                copy.close();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        else{
-            menssaje("Debe llenar el Campo de Tanque de Agua");
-
-        }
     }
 
     private void inclinacion(){
@@ -689,7 +577,7 @@ public class DescripcionBarrio extends AppCompatActivity {
             }
         }
         else{
-            menssaje("Debe llenar el Campo Inclinacion");
+            menssaje("Debe llenar el Campo Focos de Contaminacion");
 
         }
     }
@@ -702,7 +590,7 @@ public class DescripcionBarrio extends AppCompatActivity {
                 Workbook wb = Workbook.getWorkbook(new File(path));
                 WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
                 WritableSheet copySheet=copy.getSheet(0);
-                Label label1=new Label(6,11,conta);
+                Label label1=new Label(16,12,conta);
                 // Label label2=new Label(1,6,datee);
                 // Label label3=new Label(1,4,"Todo Bien");
                 copySheet.addCell(label1);
