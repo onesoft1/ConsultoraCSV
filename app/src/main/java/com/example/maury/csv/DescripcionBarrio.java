@@ -540,6 +540,25 @@ public class DescripcionBarrio extends AppCompatActivity {
 
 
     }
+    private void datosllena(int c, int r, String dato){
+        try {
+            Workbook wb = Workbook.getWorkbook(new File(path));
+            WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
+            WritableSheet copySheet=copy.getSheet(0);
+            Label label1=new Label(c,r,dato);
+
+            copySheet.addCell(label1);
+
+            copy.write();
+            copy.close();
+            //Toast.makeText(getApplicationContext(), "dato llenado en:"+c+r+ dato, Toast.LENGTH_LONG).show();
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public void menssaje(String a)
     {
