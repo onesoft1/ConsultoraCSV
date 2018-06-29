@@ -45,8 +45,12 @@
                         android:layout_marginLeft="20dp"
                         android:text="CIMIENTOS"
                         android:textStyle="bold" />
-                    <include layout="@layout/cimientos" />
 
+
+                    <Spinner
+                        android:id="@+id/cimiento"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
 
                     <TextView
                         android:id="@+id/textView32"
@@ -56,61 +60,10 @@
                         android:text="ESTRUCTURA"
                         android:textStyle="bold" />
 
-                    <include layout="@layout/estructura" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <CheckBox
-                            android:id="@+id/checkBox20"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="hormigón armado" />
-
-                        <CheckBox
-                            android:id="@+id/checkBox21"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="mixta de H°A° y muros portantes" />
-
-                        <CheckBox
-                            android:id="@+id/checkBox22"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="muros portantes con encadenado" />
-                    </LinearLayout>
-
-                    <LinearLayout
+                    <Spinner
+                        android:id="@+id/estructura"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <CheckBox
-                            android:id="@+id/checkBox23"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="muros portantes sin encadenado" />
-
-                        <CheckBox
-                            android:id="@+id/checkBox24"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="metálica" />
-
-                        <CheckBox
-                            android:id="@+id/checkBox25"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="madera" />
-                    </LinearLayout>
+                        android:layout_height="wrap_content" />
 
                     <TextView
                         android:id="@+id/textView33"
@@ -120,73 +73,10 @@
                         android:text="CUBIERTA"
                         android:textStyle="bold" />
 
-                    <LinearLayout
+                    <Spinner
+                        android:id="@+id/cubierta"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <CheckBox
-                            android:id="@+id/checkBox26"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="losa llena de H° A°" />
-
-                        <CheckBox
-                            android:id="@+id/checkBox27"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="losa alivianada" />
-
-                        <CheckBox
-                            android:id="@+id/checkBox28"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="shingle" />
-
-                        <CheckBox
-                            android:id="@+id/checkBox29"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="teja cerámica" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <CheckBox
-                            android:id="@+id/checkBox30"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="placas de fibrocemento" />
-
-                        <CheckBox
-                            android:id="@+id/checkBox31"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="teja de cemento" />
-
-                        <CheckBox
-                            android:id="@+id/checkBox32"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="calamina" />
-
-                        <CheckBox
-                            android:id="@+id/checkBox33"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="placas de cartón" />
-                    </LinearLayout>
+                        android:layout_height="wrap_content" />
 
                     <TextView
                         android:id="@+id/textView34"

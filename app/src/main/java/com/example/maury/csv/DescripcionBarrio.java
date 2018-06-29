@@ -261,7 +261,7 @@ public class DescripcionBarrio extends AppCompatActivity {
                 }
 
 
-                menssaje(seleccion);
+                //menssaje(seleccion);
 
             }
 
@@ -302,7 +302,7 @@ public class DescripcionBarrio extends AppCompatActivity {
                 }
 
 
-                menssaje(seleccion);
+                //menssaje(seleccion);
             }
 
             @Override
@@ -341,7 +341,7 @@ public class DescripcionBarrio extends AppCompatActivity {
                 }
 
 
-                menssaje(seleccion);
+               // menssaje(seleccion);
             }
 
             @Override
@@ -382,7 +382,7 @@ public class DescripcionBarrio extends AppCompatActivity {
                 }
 
 
-                menssaje(seleccion);
+                //menssaje(seleccion);
             }
 
             @Override
@@ -424,7 +424,7 @@ public class DescripcionBarrio extends AppCompatActivity {
                 }
 
 
-                menssaje(seleccion);
+               // menssaje(seleccion);
             }
 
             @Override
@@ -465,7 +465,7 @@ public class DescripcionBarrio extends AppCompatActivity {
                 }
 
 
-                menssaje(seleccion);
+                //menssaje(seleccion);
             }
 
             @Override
@@ -506,7 +506,7 @@ public class DescripcionBarrio extends AppCompatActivity {
                 }
 
 
-                menssaje(seleccion);
+                //menssaje(seleccion);
             }
 
             @Override
@@ -546,7 +546,7 @@ public class DescripcionBarrio extends AppCompatActivity {
                 }
 
 
-                menssaje(seleccion);
+               // menssaje(seleccion);
             }
 
             @Override
@@ -588,7 +588,7 @@ public class DescripcionBarrio extends AppCompatActivity {
                 }
 
 
-                menssaje(seleccion);
+               // menssaje(seleccion);
             }
 
             @Override
