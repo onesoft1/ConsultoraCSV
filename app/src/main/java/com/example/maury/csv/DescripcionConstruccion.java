@@ -107,10 +107,10 @@ public class DescripcionConstruccion extends AppCompatActivity  {
         });
 /////
         array2=(Spinner) findViewById(R.id.cubierta);
-        String[] arrays2 = {"None", "Losa llena de H° A°", "Losa alivianada","Shingle", "Teja cerámica", "Placas de fibrocemento", "Teja de cemento,", "Calamina","placas de cartón"};
-        ArrayAdapter<String> adapterz= new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, arrays);
-        arrays1.setAdapter(adapterz);
-        arrays1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        String[] arrays1 = {"None", "Losa llena de H° A°", "Losa alivianada","Shingle", "Teja cerámica", "Placas de fibrocemento", "Teja de cemento,", "Calamina","placas de cartón"};
+        ArrayAdapter<String> adapterz= new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, arrays1);
+        array2.setAdapter(adapterz);
+        array2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String seleccion=adapterView.getItemAtPosition(i).toString();
