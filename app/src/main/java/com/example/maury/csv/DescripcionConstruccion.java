@@ -1,23 +1,31 @@
 package com.example.maury.csv;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Environment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+//import android.widget.Toast;
 
-import com.multispinner.MultiSelectSpinner;
+import java.io.File;
+//import java.util.List;
 
-import java.util.List;
+import jxl.Workbook;
+import jxl.write.Label;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
 
-public class DescripcionConstruccion extends AppCompatActivity {
-
+public class DescripcionConstruccion extends AppCompatActivity  {
+    private static final int MY_PERMISSION_REQUEST_WRITE_EXTERNAL=1;
+    private final String CARPETA_RAIZ="Csv/";
+    String path;
     TextView archi;
     String archi1;
-
-
+    Spinner array, arrays1, array2, arrays3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,55 +34,117 @@ public class DescripcionConstruccion extends AppCompatActivity {
         archi= (TextView) findViewById(R.id.archivo);
         archi1=getIntent().getExtras().getString("archivo");
         archi.setText(archi1);
-
         //
-        String[] array = {"None", "Losa Radier", "Hormigón Armado", "Hormigón Ciclópeo", "Piedra", "Ladrillo", "Piedra y Barro"};
-        MultiSelectSpinner multiSelectSpinner = (MultiSelectSpinner) findViewById(R.id.spinner);
-        multiSelectSpinner.setItems(array);
-        multiSelectSpinner.hasNoneOption(true);
-        multiSelectSpinner.setSelection(new int[]{0});
-        multiSelectSpinner.setListener(new MultiSelectSpinner.OnMultipleItemsSelectedListener() {
+        array = (Spinner) findViewById(R.id.cimiento);
+        String[] array1 = {"None", "Losa Radier", "Hormigón Armado", "Hormigón Ciclópeo", "Piedra", "Ladrillo", "Piedra y Barro"};
+        ArrayAdapter<String> Adapterconstru= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_single_choice,array1);
+        array.setAdapter(Adapterconstru);
+        array.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void selectedIndices(List<Integer> indices) {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String seleccion=adapterView.getItemAtPosition(i).toString();
+                path= Environment.getExternalStorageDirectory()+ File.separator+CARPETA_RAIZ+File.separator+archi1+".xls";
+
+                if(seleccion=="Seleccione una Opcion"){
+
+                }
+                else {
+                    try {
+                        Workbook wb = Workbook.getWorkbook(new File(path));
+                        WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
+                        WritableSheet copySheet=copy.getSheet(0);
+                        Label label1=new Label(1,23,seleccion);
+                        copySheet.addCell(label1);
+                        copy.write();
+                        copy.close();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
 
             }
 
             @Override
-            public void selectedStrings(List<String> strings) {
-                Toast.makeText(getApplicationContext(), "Componentes Seleccionados:" + strings, Toast.LENGTH_LONG).show();
-            }
-        });
-
-
-        String[] array1 = {"None", "Hormigón Armado", "mixta de H°A° y muros portantes", "muros portantes con encadenado", "muros portantes sin encadenado", "metálica", "madera"};
-        MultiSelectSpinner multiSelectSpinner1 = (MultiSelectSpinner) findViewById(R.id.spinnerestructura);
-        multiSelectSpinner1.setItems(array1);
-        multiSelectSpinner1.hasNoneOption(true);
-        multiSelectSpinner1.setSelection(new int[]{0});
-      // multiSelectSpinner1.setListener(this);
-        multiSelectSpinner1.setListener(new MultiSelectSpinner.OnMultipleItemsSelectedListener() {
-            @Override
-            public void selectedIndices(List<Integer> indices) {
-
-            }
-
-            @Override
-            public void selectedStrings(List<String> strings) {
-
-
-
-                Toast.makeText(getApplicationContext(), "Componentes Seleccionados :" + strings, Toast.LENGTH_LONG).show();
-
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
+        arrays1=(Spinner) findViewById(R.id.estructura);
+        String[] arrays = {"None", "Hormigón Armado", "mixta de H°A° y muros portantes", "muros portantes con encadenado", "muros portantes sin encadenado", "metálica", "madera"};
+        ArrayAdapter<String> adapterzona= new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, arrays);
+        arrays1.setAdapter(adapterzona);
+        arrays1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String seleccion=adapterView.getItemAtPosition(i).toString();
+                path= Environment.getExternalStorageDirectory()+ File.separator+CARPETA_RAIZ+File.separator+archi1+".xls";
 
+                if(seleccion=="Seleccione una Opcion"){
+
+                }
+                else {
+                    try {
+                        Workbook wb = Workbook.getWorkbook(new File(path));
+                        WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
+                        WritableSheet copySheet=copy.getSheet(0);
+                        Label label1=new Label(1,24,seleccion);
+                        copySheet.addCell(label1);
+                        copy.write();
+                        copy.close();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+/////
+        array2=(Spinner) findViewById(R.id.cubierta);
+        String[] arrays2 = {"None", "Losa llena de H° A°", "Losa alivianada","Shingle", "Teja cerámica", "Placas de fibrocemento", "Teja de cemento,", "Calamina","placas de cartón"};
+        ArrayAdapter<String> adapterz= new ArrayAdapter<String>(this, android.R.layout.simple_list_item_single_choice, arrays);
+        arrays1.setAdapter(adapterz);
+        arrays1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String seleccion=adapterView.getItemAtPosition(i).toString();
+                path= Environment.getExternalStorageDirectory()+ File.separator+CARPETA_RAIZ+File.separator+archi1+".xls";
+
+                if(seleccion=="Seleccione una Opcion"){
+
+                }
+                else {
+                    try {
+                        Workbook wb = Workbook.getWorkbook(new File(path));
+                        WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
+                        WritableSheet copySheet=copy.getSheet(0);
+                        Label label1=new Label(1,25,seleccion);
+                        copySheet.addCell(label1);
+                        copy.write();
+                        copy.close();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
 
 
     }
-
-
 
 
     public void siguiente(View view) {
