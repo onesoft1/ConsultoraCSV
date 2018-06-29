@@ -146,9 +146,9 @@ public class DescripcionBarrio extends AppCompatActivity {
         //
         //Multi Spinner Documentos del Cliente
 
-        String[] array1 = {"None", "Testimonio", "DD.RR.", "Catastro", "P.U. Suelo", "P. Contr.", "Inpuesto", "Alumbrado"};
+        String[] array1 = {"None", "Testimonio", "DD.RR.", "Catastro", "P.U. Suelo", "P. Contr.", "Inpuesto"};
         MultiSelectSpinner multiSelectSpinner1 = (MultiSelectSpinner) findViewById(R.id.spinnerdocumentacioncliente);
-        multiSelectSpinner1.setItems(array);
+        multiSelectSpinner1.setItems(array1);
         multiSelectSpinner1.hasNoneOption(true);
         multiSelectSpinner1.setSelection(new int[]{0});
         multiSelectSpinner1.setListener(new MultiSelectSpinner.OnMultipleItemsSelectedListener() {
@@ -159,7 +159,63 @@ public class DescripcionBarrio extends AppCompatActivity {
 
             @Override
             public void selectedStrings(List<String> strings) {
-                Toast.makeText(getApplicationContext(), "Componentes Seleccionados:" + strings, Toast.LENGTH_LONG).show();
+                datosllena(2,20,"");
+                datosllena(4,20,"");
+                datosllena(6,20,"");
+                datosllena(8,20,"");
+                datosllena(10,20,"");
+                datosllena(12,20,"");
+
+
+                for(int i=0; i<strings.size();i++){
+                    String valor= "Si";
+
+                    String datos= strings.get(i);
+                    if(datos=="Testimonio"){
+                        //Toast.makeText(getApplicationContext(), "Compo Seleccionado:" + datos, Toast.LENGTH_LONG).show();
+                        datosllena(2,20,valor);
+
+                    }else{
+
+                        if (datos=="DD.RR."){
+                            // Toast.makeText(getApplicationContext(), "Compo Seleccionado:" + datos, Toast.LENGTH_LONG).show();
+                            datosllena(4,20,valor);
+
+                        }else {
+                            if (datos=="Catastro"){
+                                // Toast.makeText(getApplicationContext(), "Compo Seleccionado:" + datos, Toast.LENGTH_LONG).show();
+                                datosllena(6,20,valor);
+
+
+                            }else{
+                                if (datos=="P.U. Suelo"){
+                                    // Toast.makeText(getApplicationContext(), "Compo Seleccionado:" + datos, Toast.LENGTH_LONG).show();
+                                    datosllena(8,20,valor);
+
+
+                                }else{
+                                    if (datos=="P. Contr."){
+                                        // Toast.makeText(getApplicationContext(), "Compo Seleccionado:" + datos, Toast.LENGTH_LONG).show();
+                                        datosllena(10,20,valor);
+
+
+                                    }else{
+                                        if (datos=="Inpuesto"){
+                                            // Toast.makeText(getApplicationContext(), "Compo Seleccionado:" + datos, Toast.LENGTH_LONG).show();
+                                            datosllena(12,20,valor);
+
+
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+
+
+                    //Toast.makeText(getApplicationContext(), "Componentes Seleccionados:" + datos, Toast.LENGTH_LONG).show();
+                }
             }
         });
 
