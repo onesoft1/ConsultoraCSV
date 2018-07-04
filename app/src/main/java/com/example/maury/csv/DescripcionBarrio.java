@@ -42,7 +42,7 @@ public class DescripcionBarrio extends AppCompatActivity {
 
 
     CheckBox cordones;
-    EditText contaminante, inclina;
+    EditText contaminante, inclina, taagua;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -567,14 +567,41 @@ public class DescripcionBarrio extends AppCompatActivity {
 
     public void siguiente(View view) {
         String nomArchivo=archi.getText().toString();
-       // validarcheckbox();
-        //contaminantes();
+         validarcheckbox();
+        contaminantes();
+        inclinacion();
+        Tagua();
 
         Intent i=new Intent(this,DescripcionConstruccion.class);
         i.putExtra("archivo",nomArchivo);
         startActivity(i);
 
     }
+    private void Tagua(){
+        String incli= taagua.getText().toString();
+
+        if(incli!=""){
+            try {
+                Workbook wb = Workbook.getWorkbook(new File(path));
+                WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
+                WritableSheet copySheet=copy.getSheet(0);
+                Label label1=new Label(11,17,incli);
+
+                copySheet.addCell(label1);
+
+                copy.write();
+                copy.close();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            menssaje("Debe llenar el Campo de Tanque de Agua");
+
+        }
+    }
+
 
     private void inclinacion(){
         String incli= inclina.getText().toString();
