@@ -23,7 +23,8 @@
         <activity android:name=".DescripcionBarrio" />
         <activity android:name=".DescripcionConstruccion" />
         <activity android:name=".CapturaImagen" />
-        <activity android:name=".TomarFoto"></activity>
+        <activity android:name=".TomarFoto" />
+        <activity android:name=".DescripcionAmbientes"></activity>
     </application>
 
 </manifest>
