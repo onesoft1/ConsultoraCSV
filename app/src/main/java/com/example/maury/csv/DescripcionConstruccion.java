@@ -702,6 +702,12 @@ public class DescripcionConstruccion extends AppCompatActivity  {
         Toast.makeText(this,a,Toast.LENGTH_SHORT).show();
     }
     public void siguiente(View view) {
+
+        avanceObra();
+        numeroPlantas();
+        terrazass();
+        altillos();
+
         String nomArchivo=archi.getText().toString();
         Intent i=new Intent(this,CapturaImagen.class);
         i.putExtra("archivo",nomArchivo);
