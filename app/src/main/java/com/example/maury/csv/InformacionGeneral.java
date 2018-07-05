@@ -50,6 +50,10 @@ public class InformacionGeneral extends AppCompatActivity {
 
         NomArchivo=(EditText) findViewById(R.id.nomarchivo);
 
+
+        claseglobal iniciar=(claseglobal)getApplicationContext();
+        iniciar.setContador(1);
+
         //Calendar c= Calendar.getInstance();
 
        // NomSolicitante =(EditText) findViewById(R.id.nombresolicitante);

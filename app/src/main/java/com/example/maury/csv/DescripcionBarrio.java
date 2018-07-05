@@ -67,7 +67,76 @@ public class DescripcionBarrio extends AppCompatActivity {
 
             @Override
             public void selectedStrings(List<String> strings) {
-                Toast.makeText(getApplicationContext(), "Componentes Seleccionados:" + strings, Toast.LENGTH_LONG).show();
+                datosllena(2,14,"");
+                datosllena(4,14,"");
+                datosllena(6,14,"");
+                datosllena(8,14,"");
+                datosllena(10,14,"");
+                datosllena(12,14,"");
+                datosllena(14,14,"");
+
+                for(int i=0; i<strings.size();i++){
+                    String valor= "Si";
+
+                    String datos= strings.get(i);
+                    if(datos=="Luz"){
+                        //Toast.makeText(getApplicationContext(), "Compo Seleccionado:" + datos, Toast.LENGTH_LONG).show();
+                        datosllena(2,14,valor);
+
+                    }else{
+
+                        if (datos=="Agua"){
+                            // Toast.makeText(getApplicationContext(), "Compo Seleccionado:" + datos, Toast.LENGTH_LONG).show();
+                            datosllena(4,14,valor);
+
+                        }else {
+                            if (datos=="AlCantarillado"){
+                                // Toast.makeText(getApplicationContext(), "Compo Seleccionado:" + datos, Toast.LENGTH_LONG).show();
+                                datosllena(6,14,valor);
+
+
+                            }else{
+                                if (datos=="Telefono"){
+                                    // Toast.makeText(getApplicationContext(), "Compo Seleccionado:" + datos, Toast.LENGTH_LONG).show();
+                                    datosllena(8,14,valor);
+
+
+                                }else{
+                                    if (datos=="Gas"){
+                                        // Toast.makeText(getApplicationContext(), "Compo Seleccionado:" + datos, Toast.LENGTH_LONG).show();
+                                        datosllena(10,14,valor);
+
+
+                                    }else{
+                                        if (datos=="Transporte"){
+                                            // Toast.makeText(getApplicationContext(), "Compo Seleccionado:" + datos, Toast.LENGTH_LONG).show();
+                                            datosllena(12,14,valor);
+
+
+                                        }else {
+                                            if (datos=="Alumbrado"){
+                                                //Toast.makeText(getApplicationContext(), "Compo Seleccionado:" + datos, Toast.LENGTH_LONG).show();
+                                                datosllena(14,14,"si");
+
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+
+
+                    //Toast.makeText(getApplicationContext(), "Componentes Seleccionados:" + datos, Toast.LENGTH_LONG).show();
+                }
+
+
+
+
+
+
+
             }
         });
 
@@ -534,6 +603,7 @@ public class DescripcionBarrio extends AppCompatActivity {
         // contaminacion
         contaminante = (EditText) findViewById(R.id.contaminacion);
         inclina= (EditText) findViewById(R.id.inclinacion);
+        taagua= findViewById(R.id.tagus);
 
 
 

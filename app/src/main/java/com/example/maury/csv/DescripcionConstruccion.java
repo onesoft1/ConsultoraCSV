@@ -3,6 +3,7 @@ package com.example.maury.csv;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,21 +25,27 @@ import jxl.write.WritableWorkbook;
 public class DescripcionConstruccion extends AppCompatActivity  {
   //  private static final int MY_PERMISSION_REQUEST_WRITE_EXTERNAL=1;
     private final String CARPETA_RAIZ="Csv/";
+    claseglobal obtener;
     String path;
     TextView archi;
     String archi1;
     Spinner array, arrays1, array2, arrays3,arrays4,arrays5,arrays6, arrays7, arrays8, arrays9, arrays10, arrays11, arrays12, arrays13, arrays14, arrays15, arrays16, arrays17,arrays18,arrays19;
-
-    EditText avanceObra, numePlanta, altillo, terrazas;
+    int conta;
+    EditText avanceObra, numePlanta, altillo, terrazas, construcio;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_descripcion_construccion);
+        obtener=(claseglobal)getApplicationContext();
+
+
+        conta=obtener.getContador();
 
         //avance de obra////HASTA AQUIIIIIII********
         avanceObra= (EditText) findViewById(R.id.avanceobra);
         //numero de plantas
         numePlanta =(EditText) findViewById(R.id.numeplantas);
+        construcio= (EditText) findViewById(R.id.construc);
         //altillo
         altillo=(EditText) findViewById(R.id.altillo);
         //terrazas
@@ -65,7 +72,7 @@ public class DescripcionConstruccion extends AppCompatActivity  {
                         Workbook wb = Workbook.getWorkbook(new File(path));
                         WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
                         WritableSheet copySheet=copy.getSheet(0);
-                        Label label1=new Label(1,23,seleccion);
+                        Label label1=new Label(conta,23,seleccion);
                         copySheet.addCell(label1);
                         copy.write();
                         copy.close();
@@ -101,7 +108,7 @@ public class DescripcionConstruccion extends AppCompatActivity  {
                         Workbook wb = Workbook.getWorkbook(new File(path));
                         WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
                         WritableSheet copySheet=copy.getSheet(0);
-                        Label label1=new Label(1,24,seleccion);
+                        Label label1=new Label(conta,24,seleccion);
                         copySheet.addCell(label1);
                         copy.write();
                         copy.close();
@@ -137,7 +144,7 @@ public class DescripcionConstruccion extends AppCompatActivity  {
                         Workbook wb = Workbook.getWorkbook(new File(path));
                         WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
                         WritableSheet copySheet=copy.getSheet(0);
-                        Label label1=new Label(1,25,seleccion);
+                        Label label1=new Label(conta,25,seleccion);
                         copySheet.addCell(label1);
                         copy.write();
                         copy.close();
@@ -173,7 +180,7 @@ public class DescripcionConstruccion extends AppCompatActivity  {
                         Workbook wb = Workbook.getWorkbook(new File(path));
                         WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
                         WritableSheet copySheet=copy.getSheet(0);
-                        Label label1=new Label(1,26,seleccion);
+                        Label label1=new Label(conta,26,seleccion);
                         copySheet.addCell(label1);
                         copy.write();
                         copy.close();
@@ -209,7 +216,7 @@ public class DescripcionConstruccion extends AppCompatActivity  {
                         Workbook wb = Workbook.getWorkbook(new File(path));
                         WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
                         WritableSheet copySheet=copy.getSheet(0);
-                        Label label1=new Label(1,27,seleccion);
+                        Label label1=new Label(conta,27,seleccion);
                         copySheet.addCell(label1);
                         copy.write();
                         copy.close();
@@ -245,7 +252,7 @@ public class DescripcionConstruccion extends AppCompatActivity  {
                         Workbook wb = Workbook.getWorkbook(new File(path));
                         WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
                         WritableSheet copySheet=copy.getSheet(0);
-                        Label label1=new Label(1,28,seleccion);
+                        Label label1=new Label(conta,28,seleccion);
                         copySheet.addCell(label1);
                         copy.write();
                         copy.close();
@@ -281,7 +288,7 @@ public class DescripcionConstruccion extends AppCompatActivity  {
                         Workbook wb = Workbook.getWorkbook(new File(path));
                         WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
                         WritableSheet copySheet=copy.getSheet(0);
-                        Label label1=new Label(1,29,seleccion);
+                        Label label1=new Label(conta,29,seleccion);
                         copySheet.addCell(label1);
                         copy.write();
                         copy.close();
@@ -317,7 +324,7 @@ public class DescripcionConstruccion extends AppCompatActivity  {
                         Workbook wb = Workbook.getWorkbook(new File(path));
                         WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
                         WritableSheet copySheet=copy.getSheet(0);
-                        Label label1=new Label(1,30,seleccion);
+                        Label label1=new Label(conta,30,seleccion);
                         copySheet.addCell(label1);
                         copy.write();
                         copy.close();
@@ -353,7 +360,7 @@ public class DescripcionConstruccion extends AppCompatActivity  {
                         Workbook wb = Workbook.getWorkbook(new File(path));
                         WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
                         WritableSheet copySheet=copy.getSheet(0);
-                        Label label1=new Label(1,31,seleccion);
+                        Label label1=new Label(conta,31,seleccion);
                         copySheet.addCell(label1);
                         copy.write();
                         copy.close();
@@ -389,7 +396,7 @@ public class DescripcionConstruccion extends AppCompatActivity  {
                         Workbook wb = Workbook.getWorkbook(new File(path));
                         WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
                         WritableSheet copySheet=copy.getSheet(0);
-                        Label label1=new Label(1,32,seleccion);
+                        Label label1=new Label(conta,32,seleccion);
                         copySheet.addCell(label1);
                         copy.write();
                         copy.close();
@@ -425,7 +432,7 @@ public class DescripcionConstruccion extends AppCompatActivity  {
                         Workbook wb = Workbook.getWorkbook(new File(path));
                         WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
                         WritableSheet copySheet=copy.getSheet(0);
-                        Label label1=new Label(1,33,seleccion);
+                        Label label1=new Label(conta,33,seleccion);
                         copySheet.addCell(label1);
                         copy.write();
                         copy.close();
@@ -461,7 +468,7 @@ public class DescripcionConstruccion extends AppCompatActivity  {
                         Workbook wb = Workbook.getWorkbook(new File(path));
                         WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
                         WritableSheet copySheet=copy.getSheet(0);
-                        Label label1=new Label(1,34,seleccion);
+                        Label label1=new Label(conta,34,seleccion);
                         copySheet.addCell(label1);
                         copy.write();
                         copy.close();
@@ -497,7 +504,7 @@ public class DescripcionConstruccion extends AppCompatActivity  {
                         Workbook wb = Workbook.getWorkbook(new File(path));
                         WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
                         WritableSheet copySheet=copy.getSheet(0);
-                        Label label1=new Label(1,35,seleccion);
+                        Label label1=new Label(conta,35,seleccion);
                         copySheet.addCell(label1);
                         copy.write();
                         copy.close();
@@ -533,7 +540,7 @@ public class DescripcionConstruccion extends AppCompatActivity  {
                         Workbook wb = Workbook.getWorkbook(new File(path));
                         WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
                         WritableSheet copySheet=copy.getSheet(0);
-                        Label label1=new Label(1,36,seleccion);
+                        Label label1=new Label(conta,36,seleccion);
                         copySheet.addCell(label1);
                         copy.write();
                         copy.close();
@@ -569,7 +576,7 @@ public class DescripcionConstruccion extends AppCompatActivity  {
                         Workbook wb = Workbook.getWorkbook(new File(path));
                         WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
                         WritableSheet copySheet=copy.getSheet(0);
-                        Label label1=new Label(1,37,seleccion);
+                        Label label1=new Label(conta,37,seleccion);
                         copySheet.addCell(label1);
                         copy.write();
                         copy.close();
@@ -605,7 +612,7 @@ public class DescripcionConstruccion extends AppCompatActivity  {
                         Workbook wb = Workbook.getWorkbook(new File(path));
                         WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
                         WritableSheet copySheet=copy.getSheet(0);
-                        Label label1=new Label(1,38,seleccion);
+                        Label label1=new Label(conta,38,seleccion);
                         copySheet.addCell(label1);
                         copy.write();
                         copy.close();
@@ -641,7 +648,7 @@ public class DescripcionConstruccion extends AppCompatActivity  {
                         Workbook wb = Workbook.getWorkbook(new File(path));
                         WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
                         WritableSheet copySheet=copy.getSheet(0);
-                        Label label1=new Label(1,39,seleccion);
+                        Label label1=new Label(conta,39,seleccion);
                         copySheet.addCell(label1);
                         copy.write();
                         copy.close();
@@ -677,7 +684,7 @@ public class DescripcionConstruccion extends AppCompatActivity  {
                         Workbook wb = Workbook.getWorkbook(new File(path));
                         WritableWorkbook copy=Workbook.createWorkbook(new File(path),wb);
                         WritableSheet copySheet=copy.getSheet(0);
-                        Label label1=new Label(1,40,seleccion);
+                        Label label1=new Label(conta,40,seleccion);
                         copySheet.addCell(label1);
                         copy.write();
                         copy.close();
@@ -703,16 +710,50 @@ public class DescripcionConstruccion extends AppCompatActivity  {
     }
     public void siguiente(View view) {
 
-        avanceObra();
-        numeroPlantas();
-        terrazass();
-        altillos();
+        String con = construcio.getText().toString();
+        String val="";
+        path= Environment.getExternalStorageDirectory()+ File.separator+CARPETA_RAIZ+File.separator+archi1+".xls";
+        if (con.equals(val)) {
+            menssaje("Debe Colocar una letra a la construccion");
 
-        String nomArchivo=archi.getText().toString();
-        Intent i=new Intent(this,CapturaImagen.class);
-        i.putExtra("archivo",nomArchivo);
-        startActivity(i);
+        } else {
+
+            try {
+                Workbook wb = Workbook.getWorkbook(new File(path));
+                WritableWorkbook copy = Workbook.createWorkbook(new File(path), wb);
+                WritableSheet copySheet = copy.getSheet(0);
+                Label label1 = new Label(1, 22, con);
+
+                copySheet.addCell(label1);
+
+                copy.write();
+                copy.close();
+                avanceObra();
+                numeroPlantas();
+                terrazass();
+                altillos();
+
+
+
+                String nomArchivo=archi.getText().toString();
+                Intent i=new Intent(this,DescripcionAmbientes.class);
+                i.putExtra("archivo",nomArchivo);
+                obtener.setContruccion(con);
+                //i.putExtra("costruccion", (Parcelable) construcio);
+                startActivity(i);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+
+
+
     }
+
+
+
     private void avanceObra() {
         String avanceobra = avanceObra.getText().toString();
         path= Environment.getExternalStorageDirectory()+ File.separator+CARPETA_RAIZ+File.separator+archi1+".xls";
@@ -721,7 +762,7 @@ public class DescripcionConstruccion extends AppCompatActivity  {
                 Workbook wb = Workbook.getWorkbook(new File(path));
                 WritableWorkbook copy = Workbook.createWorkbook(new File(path), wb);
                 WritableSheet copySheet = copy.getSheet(0);
-                Label label1 = new Label(1, 41, avanceobra);
+                Label label1 = new Label(conta, 41, avanceobra);
 
                 copySheet.addCell(label1);
 
@@ -745,7 +786,7 @@ public class DescripcionConstruccion extends AppCompatActivity  {
                     Workbook wb = Workbook.getWorkbook(new File(path));
                     WritableWorkbook copy = Workbook.createWorkbook(new File(path), wb);
                     WritableSheet copySheet = copy.getSheet(0);
-                    Label label1 = new Label(1, 42, plantas);
+                    Label label1 = new Label(conta, 42, plantas);
 
                     copySheet.addCell(label1);
 
@@ -770,7 +811,7 @@ public class DescripcionConstruccion extends AppCompatActivity  {
                     Workbook wb = Workbook.getWorkbook(new File(path));
                     WritableWorkbook copy = Workbook.createWorkbook(new File(path), wb);
                     WritableSheet copySheet = copy.getSheet(0);
-                    Label label1 = new Label(1, 43, altill);
+                    Label label1 = new Label(conta, 43, altill);
 
                     copySheet.addCell(label1);
 
@@ -795,7 +836,7 @@ public class DescripcionConstruccion extends AppCompatActivity  {
                     Workbook wb = Workbook.getWorkbook(new File(path));
                     WritableWorkbook copy = Workbook.createWorkbook(new File(path), wb);
                     WritableSheet copySheet = copy.getSheet(0);
-                    Label label1 = new Label(1, 44, terracita);
+                    Label label1 = new Label(conta, 44, terracita);
 
                     copySheet.addCell(label1);
 
