@@ -53,6 +53,8 @@ public class InformacionGeneral extends AppCompatActivity {
 
         claseglobal iniciar=(claseglobal)getApplicationContext();
         iniciar.setContador(1);
+        claseglobal iniciardescrip=(claseglobal)getApplicationContext();
+        iniciardescrip.setContadescrip(1);
 
         //Calendar c= Calendar.getInstance();
 
@@ -143,10 +145,10 @@ public class InformacionGeneral extends AppCompatActivity {
             WritableSheet copySheet=copy.getSheet(0);
             Label label1=new Label(11,6,date.getHours()+":"+date.getMinutes());
             Label label2=new Label(1,6,datee);
-            Label label3=new Label(1,4,"Todo Bien");
+            //Label label3=new Label(1,4,"Todo Bien");
             copySheet.addCell(label1);
             copySheet.addCell(label2);
-            copySheet.addCell(label3);
+           // copySheet.addCell(label3);
             copy.write();
             copy.close();
 

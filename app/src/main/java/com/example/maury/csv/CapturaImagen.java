@@ -37,6 +37,8 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 public class CapturaImagen extends AppCompatActivity {
 
+    claseglobal datos;
+
     private final String CARPETA_RAIZ="Csv/";
     private final String CARPETA_RAIZZ="Csv/";
 
@@ -45,12 +47,13 @@ public class CapturaImagen extends AppCompatActivity {
     final int COD_SELECCIONA=10;
     final int COD_FOTO=20;
     int codigo=0;
-    int celda=55;
+    int celda=61;
     Button botonCargar;
     ImageView imagen;
     String path,path1;
     TextView archi;
-    String archi1;
+    String archi1,construccion,planta;
+
 
 
 
@@ -58,6 +61,10 @@ public class CapturaImagen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_captura_imagen);
+        datos= (claseglobal)getApplicationContext();
+
+        construccion="Construccion "+datos.getContruccion();
+        planta="Planta "+datos.getPlanta();
 
         archi= (TextView) findViewById(R.id.archivo);
 
@@ -155,7 +162,7 @@ public class CapturaImagen extends AppCompatActivity {
 
     private void cargarImagen() {
 
-        final CharSequence[] opciones={"Tomar Foto","Cargar Imagen","Cancelar"};
+        final CharSequence[] opciones={"Tomar Foto","Cancelar"};
         final AlertDialog.Builder alertOpciones=new AlertDialog.Builder(CapturaImagen.this);
         alertOpciones.setTitle("Seleccione una Opción");
         alertOpciones.setItems(opciones, new DialogInterface.OnClickListener() {
@@ -189,7 +196,7 @@ public class CapturaImagen extends AppCompatActivity {
         }
 
         if(isCreada==true){
-            nombreImagen=(archi1+codigo)+".jpg";
+            nombreImagen=(archi1+construccion+planta+codigo)+".jpg";
             //nombreImagen1=archi1+codigo;
 
 
@@ -198,7 +205,7 @@ public class CapturaImagen extends AppCompatActivity {
 
 
         path=Environment.getExternalStorageDirectory()+
-                File.separator+RUTA_IMAGEN+File.separator+nombreImagen;
+                File.separator+RUTA_IMAGEN+File.separator+construccion+File.separator+planta+File.separator+nombreImagen;
 
         File imagen=new File(path);
 
@@ -235,7 +242,7 @@ public class CapturaImagen extends AppCompatActivity {
             WritableWorkbook copy=Workbook.createWorkbook(new File(path1),wb);
             WritableSheet copySheet=copy.getSheet(0);
 
-            Label label2=new Label(2,celda,nombreIma);
+            Label label2=new Label(0,celda,nombreIma);
             //Label label1=new Label(2,52,"Bien");
             // Label label3=new Label(1,4,"Todo Bien");
 

@@ -30,6 +30,7 @@ public class DescripcionAmbientes extends AppCompatActivity {
     String archi1, ambiente;
     EditText plantas,living1,comedores1, salas1, cocinas1, despensas1, dormitorios1, suites1, banos1, escritorios1, areas1, lavanderias1, cuartos1 ;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,10 +47,11 @@ public class DescripcionAmbientes extends AppCompatActivity {
         ambiente =cons.getText().toString();
 
         cons.setText(ambiente+" "+datos.getContruccion());
-        horizontal=datos.getContador();
+        horizontal=datos.getContadescrip();
+
 
         plantas= findViewById(R.id.planta);
-// edit text
+        // edit text
         living1=(EditText) findViewById(R.id.livings);
         comedores1=(EditText) findViewById(R.id.comedores);
         salas1=(EditText) findViewById(R.id.Salas);
@@ -63,17 +65,21 @@ public class DescripcionAmbientes extends AppCompatActivity {
         lavanderias1=(EditText) findViewById(R.id.lavanderias);
         cuartos1=(EditText) findViewById(R.id.cuartos);
 
-
-
-    }
-    public void menssaje(String a)
-    {
-        Toast.makeText(this,a,Toast.LENGTH_SHORT).show();
     }
 
     public void siguiente(View view) {
-        String nomArchivo=archi.getText().toString();
+
+        String planta= plantas.getText().toString();
+
+
+        claseglobal caragarplatna=(claseglobal)getApplicationContext();
+        caragarplatna.setPlanta(planta);
+
         datosllena(horizontal,46,plantas.getText().toString()+datos.getContruccion());
+
+        datos.setPlanta(plantas.getText().toString());
+
+        String nomArchivo=archi.getText().toString();
         Intent i=new Intent(this,CapturaImagen.class);
         i.putExtra("archivo",nomArchivo);
         startActivity(i);
@@ -91,8 +97,12 @@ public class DescripcionAmbientes extends AppCompatActivity {
         cuartos2();
 
 
-    }
 
+    }
+    public void menssaje(String a)
+    {
+        Toast.makeText(this,a,Toast.LENGTH_SHORT).show();
+    }
     private void datosllena(int c, int r, String dato){
         path = Environment.getExternalStorageDirectory() + File.separator + CARPETA_RAIZ + File.separator + archi1 + ".xls";
         try {
@@ -114,7 +124,7 @@ public class DescripcionAmbientes extends AppCompatActivity {
         }
     }
     // living1
-       private void Living2() {
+    private void Living2() {
         String Livings = living1.getText().toString();
         path= Environment.getExternalStorageDirectory()+ File.separator+CARPETA_RAIZ+File.separator+archi1+".xls";
         if (Livings != "") {
@@ -138,7 +148,7 @@ public class DescripcionAmbientes extends AppCompatActivity {
         }
 
 
-       }
+    }
     //comedores1,
     private void Comedores2() {
         String comedoress = comedores1.getText().toString();

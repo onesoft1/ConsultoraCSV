@@ -10,10 +10,20 @@ import android.app.Application;
 public class claseglobal extends Application {
 
    private int contador;
+    private int contadescrip;
    private String contruccion;
+    private String planta;
 
     public int getContador() {
         return contador;
+    }
+
+    public int getContadescrip() {
+        return contadescrip;
+    }
+
+    public void setContadescrip(int contadescrip) {
+        this.contadescrip = contadescrip;
     }
 
     public void setContador(int contador) {
@@ -26,5 +36,13 @@ public class claseglobal extends Application {
 
     public void setContruccion(String contruccion) {
         this.contruccion = contruccion;
+    }
+
+    public String getPlanta() {
+        return planta;
+    }
+
+    public void setPlanta(String planta) {
+        this.planta = planta;
     }
 }
