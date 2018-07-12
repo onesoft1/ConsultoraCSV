@@ -9,10 +9,11 @@ import android.app.Application;
 
 public class claseglobal extends Application {
 
-   private int contador;
+    private int contador;
     private int contadescrip;
-   private String contruccion;
+    private String contruccion;
     private String planta;
+    private String [] fotos= new String[500];
 
     public int getContador() {
         return contador;
@@ -44,5 +45,13 @@ public class claseglobal extends Application {
 
     public void setPlanta(String planta) {
         this.planta = planta;
+    }
+
+    public String[] getFotos() {
+        return fotos;
+    }
+
+    public void setFotos(String[] fotos) {
+        this.fotos = fotos;
     }
 }

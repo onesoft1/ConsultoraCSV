@@ -69,6 +69,7 @@ public class CapturaImagen extends AppCompatActivity {
         archi= (TextView) findViewById(R.id.archivo);
 
         archi1=getIntent().getExtras().getString("archivo");
+        archi.setText(archi1);
 
         RUTA_IMAGEN=CARPETA_RAIZ+archi1;
 
@@ -169,6 +170,7 @@ public class CapturaImagen extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 if (opciones[i].equals("Tomar Foto")){
+                    RUTA_IMAGEN=CARPETA_RAIZ+archi1;
                     tomarFotografia();
                 }else{
                     if (opciones[i].equals("Cargar Imagen")){
@@ -186,6 +188,9 @@ public class CapturaImagen extends AppCompatActivity {
     }
 
     private void tomarFotografia() {
+
+        //datos.setFotos();
+
         File fileImagen=new File(Environment.getExternalStorageDirectory(),RUTA_IMAGEN);
         boolean isCreada=fileImagen.exists();
         String nombreImagen="";
@@ -196,7 +201,28 @@ public class CapturaImagen extends AppCompatActivity {
         }
 
         if(isCreada==true){
-            nombreImagen=(archi1+construccion+planta+codigo)+".jpg";
+            RUTA_IMAGEN=RUTA_IMAGEN+File.separator+construccion;
+            File fileImagencon=new File(Environment.getExternalStorageDirectory(),RUTA_IMAGEN);
+            boolean isCreadacon=fileImagencon.exists();
+            //String nombreImagencon="";
+            if(isCreadacon==false){
+                isCreadacon=fileImagencon.mkdirs();
+            }
+            if(isCreadacon==true){
+                RUTA_IMAGEN=RUTA_IMAGEN+File.separator+planta;
+                File fileImagenplan=new File(Environment.getExternalStorageDirectory(),RUTA_IMAGEN);
+                boolean isCreadaplan=fileImagenplan.exists();
+                if(isCreadaplan==false){
+                    isCreadaplan=fileImagenplan.mkdirs();
+                }
+                if(isCreadaplan==true){
+                    nombreImagen=(archi1+construccion+planta+codigo)+".jpg";
+                }
+
+
+            }
+
+
             //nombreImagen1=archi1+codigo;
 
 
@@ -205,7 +231,7 @@ public class CapturaImagen extends AppCompatActivity {
 
 
         path=Environment.getExternalStorageDirectory()+
-                File.separator+RUTA_IMAGEN+File.separator+construccion+File.separator+planta+File.separator+nombreImagen;
+                File.separator+RUTA_IMAGEN+File.separator+nombreImagen;
 
         File imagen=new File(path);
 
@@ -288,4 +314,28 @@ public class CapturaImagen extends AppCompatActivity {
         }
     }
 
+    public void nuevaplanta(View view) {
+
+        String nomArchivo=archi.getText().toString();
+        Intent i=new Intent(this,DescripcionAmbientes.class);
+        i.putExtra("archivo",nomArchivo);
+        datos.setContadescrip(datos.getContadescrip()+2);
+        //obtener.setContruccion(con);
+        //i.putExtra("costruccion", (Parcelable) construcio);
+        startActivity(i);
+
+    }
+
+    public void nuevaconstruccion(View view) {
+        String nomArchivo=archi.getText().toString();
+        Intent i=new Intent(this,DescripcionConstruccion.class);
+        i.putExtra("archivo",nomArchivo);
+        datos.setContadescrip(datos.getContadescrip()+2);
+        //obtener.setContruccion(con);
+        //i.putExtra("costruccion", (Parcelable) construcio);
+        startActivity(i);
+    }
+
+    public void terminado(View view) {
+    }
 }

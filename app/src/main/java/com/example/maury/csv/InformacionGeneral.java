@@ -19,9 +19,11 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -170,21 +172,108 @@ public class InformacionGeneral extends AppCompatActivity {
         }
     }
 
+  /*  private void openWhatsApp() {
+        String smsNumber = "8801714884544";
+        boolean isWhatsappInstalled = whatsappInstalledOrNot("com.whatsapp");
+        if (isWhatsappInstalled) {
+            try { Intent sendIntent = new Intent("android.intent.action.MAIN");
+                sendIntent.setAction(Intent.ACTION_SEND); sendIntent.setType("text/plain");
+                sendIntent.putExtra(Intent.EXTRA_TEXT, FormViews.getTexBoxFieldValue(enquiryEditText));
+                sendIntent.putExtra("jid", smsNumber + "@s.whatsapp.net");
+
+            phone number without "+" prefix sendIntent.setPackage("com.whatsapp");
+            startActivity(sendIntent);
+        } catch(Exception e) { Toast.makeText(getActivity(), "Error/n" + e.toString(), Toast.LENGTH_SHORT).show();
+        } } else { Uri uri = Uri.parse("market://details?id=com.whatsapp");
+        Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+        Toast.makeText(getActivity(), "WhatsApp not Installed", Toast.LENGTH_SHORT).show();
+        getActivity().startActivity(goToMarket);
+        } } private boolean whatsappInstalledOrNot(String uri) { PackageManager pm = getActivity().getPackageManager();
+        boolean app_installed = false;
+        try { pm.getPackageInfo(uri, PackageManager.GET_ACTIVITIES); app_installed = true;
+        } catch (PackageManager.NameNotFoundException e) { app_installed = false;
+        } return app_installed;
+            }
+*/
+
     public void Whatsapp(View view) {
-
-        String nomArchivo=NomArchivo.getText().toString();
         path=Environment.getExternalStorageDirectory()+
-                File.separator+CARPETA_RAIZ+File.separator+"Cesar"+File.separator+"Cesar1.jpg";
-        Uri uri;
-        uri= Uri.parse(path);
+                File.separator+CARPETA_RAIZ+File.separator+"Cesarr"+File.separator+"Construccion A"+File.separator+"Planta Baja"+File.separator+"Baja.jpg";
+        String [] fotos = new String[10];
 
-        Intent sendIntent = new Intent();
-        sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.setPackage("com.whatsapp");
-        sendIntent.putExtra(Intent.EXTRA_STREAM, uri);
-        //sendIntent.setType("application/vnd.ms-excel");
-        sendIntent.setType("image/jpeg");
-        startActivity(sendIntent);
+        fotos[0]=Environment.getExternalStorageDirectory()+ File.separator+CARPETA_RAIZ+File.separator+"Cesarr"+File.separator+"Construccion A"+File.separator+"Planta Baja"+File.separator+"Baja.jpg";
+        fotos[1]=Environment.getExternalStorageDirectory()+ File.separator+CARPETA_RAIZ+File.separator+"Cesarr"+File.separator+"Construccion A"+File.separator+"Planta Baja"+File.separator+"Bj.jpg";
+
+
+
+
+        try {
+            Intent intent = new Intent("android.intent.action.MAIN");
+            intent.setAction(Intent.ACTION_SEND_MULTIPLE);
+            intent.setType("image/jpeg");
+
+            ArrayList<Uri> uris = new ArrayList<Uri>();
+
+            uris.add(Uri.parse(fotos[0]));
+            uris.add(Uri.parse(fotos[1]));
+            intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, uris);
+
+
+
+            //intent.putExtra(Intent.EXTRA_STREAM, Uri.parse(Environment.getExternalStorageDirectory()+ File.separator+CARPETA_RAIZ+File.separator+"Cesarr"+File.separator+"Construccion A"+File.separator+"Planta Baja"+File.separator+"Baja.jpg"));
+            intent.putExtra("jid", "59168453650" + "@s.whatsapp.net"); //numero telefonico sin prefijo "+"!
+            intent.setPackage("com.whatsapp");
+            startActivity(intent);
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(getApplicationContext(), "Whatsapp no esta instalado.", Toast.LENGTH_LONG).show();
+        }
+
+
+
+      // Intent i = new Intent(Intent.ACTION_VIEW).setData(Uri.parse(path + "+59168453650.whatsapp.net"));
+       // i.setPackage("com.whatsapp");
+      //  startActivity(i);
+
+
+     /*   try {
+            //PackageManager packageManager = Context. getPackageManager();
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            String url = "https://api.whatsapp.com/send?phone="+ "59168453650" +"&image=" + Environment.getExternalStorageDirectory()+ File.separator+CARPETA_RAIZ+File.separator+"Cesarr"+File.separator+"Construccion A"+File.separator+"Planta Baja"+File.separator+"Baja.jpg";
+            i.setPackage("com.whatsapp");
+            i.setData(Uri.parse(url));
+            startActivity(i);
+            //if (i.resolveActivity(packageManager) != null) {
+           //     Context.startActivity(i);
+           // }
+        } catch (Exception e){ e.printStackTrace();
+        }
+
+*/
+
+
+
+
+
+
+
+
+ /*       String nomArchivo=NomArchivo.getText().toString();
+        path=Environment.getExternalStorageDirectory()+
+                File.separator+CARPETA_RAIZ+File.separator+"Cesarr"+File.separator+"Construccion A"+File.separator+"Planta Baja"+File.separator+"Baja.jpg";
+for(int a=0;a<=fotos.length;a++){
+    Uri uri;
+    uri= Uri.parse(fotos[a]+ "+59168453650.whatsapp.net");
+
+    Intent sendIntent = new Intent();
+    sendIntent.setAction(Intent.ACTION_SEND);
+    sendIntent.setPackage("com.whatsapp");
+    sendIntent.putExtra(Intent.EXTRA_STREAM, uri);
+    //sendIntent.setType("application/vnd.ms-excel");
+    sendIntent.setType("image/jpeg");
+    startActivity(sendIntent);
+
+}
+*/
 
 
 
